@@ -23,14 +23,16 @@ public class RegisterServiceImplementation implements RegisterService {
 
 		String status = "";
 		try {
+			
+			
 			Query query = new Query();
-			query.addCriteria(Criteria.where("userName").is(register.getUserName()));
+			query.addCriteria(Criteria.where("email").is(register.getIdNumber()));
 			//query.addCriteria(Criteria.where("email").is(register.getEmail()));
 			RegisterForAccess userdata = mongoTemplate.findOne(query, RegisterForAccess.class);
 			System.out.println(userdata);
 			if (userdata != null) {
-				if(userdata.getUserName().equals(register.getUserName()))
-				status = "already register with this username";
+				if(userdata.getIdNumber().equals(register.getIdNumber()))
+				status = "You have already register with this email";
 			} else {
 				RegisterForAccess result = registerrepo.save(register);
 

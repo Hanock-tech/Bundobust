@@ -22,7 +22,7 @@ public class SigninServiceImple implements SigninService {
 		
 		
 		Query query=new Query();
-		query.addCriteria(Criteria.where("").orOperator(Criteria.where("UserName").is(register.getUserName()),(Criteria.where("email").is(register.getEmail()))));
+		query.addCriteria(Criteria.where("").orOperator(Criteria.where("idNumber").is(register.getIdNumber()),(Criteria.where("mobileNumber").is(register.getMobileNumber()))));
 		System.out.println(query);
 		RegisterForAccess userdata = mongoTemplate.findOne(query, RegisterForAccess.class);
 		System.out.println(userdata);
