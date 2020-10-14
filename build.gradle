@@ -1,18 +1,36 @@
 plugins {
+<<<<<<< HEAD
 	id 'org.springframework.boot' version '2.3.4.RELEASE'
+=======
+	id 'org.springframework.boot' version '2.3.3.RELEASE'
+>>>>>>> 508c84350c714e7748b5ab5d5b976089bbf636c5
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
 }
 
+<<<<<<< HEAD
 group = 'com.police'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+=======
+group = 'com.robosoft.bundobust'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+>>>>>>> 508c84350c714e7748b5ab5d5b976089bbf636c5
 repositories {
 	mavenCentral()
 }
 
 dependencies {
+<<<<<<< HEAD
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 	// https://mvnrepository.com/artifact/org.mockito/mockito-all
 testCompile group: 'org.mockito', name: 'mockito-all', version: '2.0.2-beta'
@@ -30,6 +48,17 @@ compile group: 'org.hibernate', name: 'hibernate-validator', version: '6.1.0.Fin
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 
+=======
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	testImplementation 'org.springframework.security:spring-security-test'
+>>>>>>> 508c84350c714e7748b5ab5d5b976089bbf636c5
 }
 
 test {
