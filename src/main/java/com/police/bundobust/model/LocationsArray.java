@@ -6,6 +6,15 @@ public class LocationsArray {
 
 	private String[] districts;
 	private String[] sdpos;
+	private String[] ranks;
+	public String[] getRanks() {
+		return ranks;
+	}
+
+	public void setRanks(String[] ranks) {
+		this.ranks = ranks;
+	}
+
 	public String[] getSdpos() {
 		return sdpos;
 	}
@@ -37,7 +46,8 @@ public class LocationsArray {
 	@Override
 	public String toString() {
 		return "LocationsArray [districts=" + Arrays.toString(districts) + ", sdpos=" + Arrays.toString(sdpos)
-				+ ", circles=" + Arrays.toString(circles) + ", policestations=" + Arrays.toString(policestations) + "]";
+				+ ", ranks=" + Arrays.toString(ranks) + ", circles=" + Arrays.toString(circles) + ", policestations="
+				+ Arrays.toString(policestations) + "]";
 	}
 
 	public String[] getDistricts() {

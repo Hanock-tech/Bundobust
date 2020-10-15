@@ -27,8 +27,7 @@ public class LocationDetailController {
 	@Autowired
 	private LocationService locationservice;
 
-	
-	
+
 	@GetMapping("/districts")
 	public ResponseEntity<GenericResponse<LocationsArray>> getdistrict() {
 
@@ -74,12 +73,12 @@ public class LocationDetailController {
 
 					for (LocationDetails data : locationlist) {
 						if (data.getDistrict().equals(district)) {
-						if (data.getSdpo() != null && !data.getSdpo().isEmpty()
-								&& !sdpolist.get().contains(data.getSdpo())) {
-							sdpolist.get().add(data.getSdpo());
-						}
+							if (data.getSdpo() != null && !data.getSdpo().isEmpty()
+									&& !sdpolist.get().contains(data.getSdpo())) {
+								sdpolist.get().add(data.getSdpo());
+							}
 
-					}
+						}
 					}
 				}
 
@@ -138,8 +137,8 @@ public class LocationDetailController {
 
 	@GetMapping("/policestations")
 	public ResponseEntity<GenericResponse<LocationsArray>> getpolicestation(
-			@RequestParam(value = "circle") String circle,@RequestParam(value = "district") String district, @RequestParam(value = "sdpo") String sdpo
-			) {
+			@RequestParam(value = "circle") String circle, @RequestParam(value = "district") String district,
+			@RequestParam(value = "sdpo") String sdpo) {
 
 		List<Location> response = locationservice.findbydistrictandsdpoandcircle(district, sdpo, circle);
 		System.out.println(response);
@@ -163,7 +162,7 @@ public class LocationDetailController {
 					}
 
 				}
-			
+
 			}
 			locationList = policestationlist.get().toArray(new String[policestationlist.get().size()]);
 		}
@@ -174,6 +173,24 @@ public class LocationDetailController {
 		response1.setData(res);
 
 		return new ResponseEntity<>(response1, HttpStatus.OK);
+	}
+
+	@GetMapping("/ranks")
+	public GenericResponse<LocationsArray> getranks() {
+		List<Location> location = locationservice.findAll();
+		GenericResponse<LocationsArray> response1 = new GenericResponse<>();
+		if (location != null) {
+			for (Location locationdata : location) {
+				String[] ranks = locationdata.getRanks();
+				LocationsArray res = new LocationsArray();
+				res.setRanks(ranks);
+
+				response1.setData(res);
+			}
+		}
+
+		return response1;
+
 	}
 
 }

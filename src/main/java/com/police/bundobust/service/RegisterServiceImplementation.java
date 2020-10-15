@@ -23,7 +23,10 @@ public class RegisterServiceImplementation implements RegisterService {
 
 		String status = "";
 		try {
-			
+			if(register.getPassword()!=register.getConfirmPassword()) {
+				status="password and confirm password should be  match";
+					return status; 
+				}
 			
 			Query query = new Query();
 			query.addCriteria(Criteria.where("email").is(register.getIdNumber()));
